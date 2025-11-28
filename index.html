@@ -1,291 +1,731 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dipin Silwal | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" />
-  <style>
-    :root {
-      --bg: #fdfdfd;
-      --text: #1e1e1e;
-      --accent: #2c3e50;
-      --highlight: #00b894;
-      --hover: #009879;
-      --dark-bg: #121212;
-      --dark-text: #e0e0e0;
-      --card-light: #ffffff;
-      --card-dark: #1e1e1e;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dipin Silwal | Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* --- 1. Color Palette & Base Styles --- */
+        :root {
+            --primary-color: #007BFF;   /* Professional Blue */
+            --secondary-color: #6C757D; /* Neutral Grey */
+            --background-light: #F8F9FA; /* Lightest background */
+            --background-white: #FFFFFF; /* Pure white for contrast */
+            --text-dark: #212529;      /* Dark text */
+            --border-color: #E9ECEF;   /* Light border/divider */
+            --hover-light: #e0f2ff;    /* Very light blue hover */
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: all 0.3s ease;
-    }
-    body.dark-mode {
-      background: var(--dark-bg);
-      color: var(--dark-text);
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    nav {
-      background: var(--accent);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    nav h1 {
-      font-size: 1.5rem;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    .nav-links li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .nav-links li a:hover {
-      color: var(--highlight);
-    }
-    #toggleDarkMode {
-      background: var(--highlight);
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            scroll-behavior: smooth;
+        }
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .bar {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      margin: 4px 0;
-      transition: 0.4s;
-    }
-    .hamburger.active .bar:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .hamburger.active .bar:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      padding: 4rem 2rem;
-      background: linear-gradient(to right, var(--accent), #34495e);
-      color: white;
-    }
-    .intro {
-      flex: 1 1 300px;
-      margin-bottom: 2rem;
-    }
-    .intro h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .intro p {
-      font-size: 1.1rem;
-    }
-    header img {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 0.5em;
+            color: var(--text-dark);
+        }
 
-    section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
 
-    .skills ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      list-style: none;
-      padding-left: 0;
-    }
-    .skills li {
-      background: var(--accent);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 25px;
-      font-weight: 500;
-    }
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 40px 0;
+        }
 
-    .projects .project-card {
-      background: var(--card-light);
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      transition: background 0.3s;
-    }
-    body.dark-mode .projects .project-card {
-      background: var(--card-dark);
-      color: var(--dark-text);
-    }
+        /* --- 2. Navigation & Header --- */
+        header {
+            background-color: var(--background-white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .socials a {
-      margin-right: 1rem;
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .socials a i {
-      margin-right: 5px;
-    }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: var(--accent);
-      color: white;
-    }
+        .logo {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
 
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-      .nav-links {
-        flex-direction: column;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-        width: 100%;
-        background: var(--accent);
-      }
-      .nav-links.open {
-        max-height: 300px;
-        padding: 1rem 0;
-      }
-      nav ul li {
-        text-align: center;
-        margin: 0.5rem 0;
-      }
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      header img {
-        margin-top: 1.5rem;
-      }
-    }
-  </style>
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul a {
+            font-weight: 500;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+
+        nav ul a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- 3. Global Section Styles & Animations --- */
+        section {
+            padding: 60px 0;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* CSS Class added by JavaScript on scroll */
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero Section is visible by default */
+        #hero {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        /* --- 4. Hero Section --- */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 0;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            max-width: 60%;
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 5px;
+        }
+
+        .title-animation {
+            font-size: 1.5em;
+            font-weight: 400;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .hero-image-container {
+            max-width: 40%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-placeholder {
+            width: 250px;
+            height: 250px;
+            background-color: var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+            text-align: center;
+        }
+        
+        /* --- 5. Buttons --- */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .primary-btn {
+            background-color: var(--primary-color);
+            color: var(--background-white);
+            border: 2px solid var(--primary-color);
+        }
+
+        .primary-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--hover-light);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* --- 6. About Section --- */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5em;
+        }
+
+        /* --- 7. Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--background-white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .project-image-placeholder {
+            height: 180px;
+            background-color: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 0.9em;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .project-card h3 {
+            padding: 15px 15px 5px;
+            font-size: 1.4em;
+        }
+
+        .project-card p {
+            padding: 0 15px 15px;
+            color: var(--secondary-color);
+            font-size: 0.95em;
+        }
+
+        .skills-used {
+            padding: 0 15px 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skills-used span {
+            background-color: var(--hover-light);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .view-btn {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--background-white);
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* --- 8. Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .skill-category {
+            background-color: var(--background-white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--text-dark);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-icon {
+            color: var(--primary-color);
+            font-size: 1.1em;
+            margin-right: 10px;
+        }
+
+        /* --- 9. Contact Section --- */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .contact-form {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .contact-info {
+            flex: 1;
+            background-color: var(--background-white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- 10. Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--border-color);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: var(--background-white);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- 11. Responsiveness --- */
+        @media (max-width: 992px) {
+            .hero-section {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 60px;
+                min-height: auto;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-top: 40px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image-container {
+                max-width: 100%;
+            }
+
+            .contact-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding-bottom: 10px;
+            }
+
+            nav ul {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .title-animation {
+                font-size: 1.2em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">Dipin Silwal</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <nav>
-    <h1>Dipin Silwal</h1>
-    <div class="hamburger" id="hamburger">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><button id="toggleDarkMode">Dark Mode</button></li>
-    </ul>
-  </nav>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <p class="intro-text">Hello, I'm</p>
+                <h1>Dipin Silwal</h1>
+                <h2 class="title-animation">Data Analyst | Python • SQL • Power BI • Machine Learning</h2>
+                <p class="tagline">Turning data into decisions with clean analysis and impactful insights.</p>
+                <div class="hero-buttons">
+                    <a href="#" download class="btn primary-btn">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                    <a href="#contact" class="btn secondary-btn">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="image-placeholder">
+                 <img src="1000080563-min.png" alt="Dipin Silwal Professional Portrait" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+            </div>
+        </section>
 
-  <header>
-    <div class="intro">
-      <h1>Hello, I'm Dipin</h1>
-      <p>Computer Science student passionate about data science .</p>
-    </div>
-    <img src="1000080563-min.png" alt="Dipin Silwal">
-  </header>
+        <hr>
 
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Python</li>
-      <li>NumPy</li>
-      <li>Matplotlib</li>
-      <li>Pandas</li>
-      <li>SQL</li>
-      <li>HTML</li>
-      <li>CSS</li>
-    </ul>
-  </section>
+        <section id="about" class="about-section">
+            <h2><i class="fas fa-user-circle"></i> About Me</h2>
+            <div class="about-content">
+                <p>I am a **Bachelor’s student specializing in Data Analytics**, driven by a passion for transforming raw information into actionable business strategies.</p>
+                <p>I am highly **skilled in Python (NumPy, Pandas, Matplotlib, Seaborn), SQL, Excel, and Power BI**. My knowledge extends to the basics of **Machine Learning**, which I leverage to extract deeper insights and solve complex business problems. I am committed to delivering clean analysis and impactful visualizations.</p>
+            </div>
+        </section>
 
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="project-card">
-      <h3>Customer Purchase Analysis</h3>
-      <p>Analyzed e-commerce purchase history using Python and Matplotlib to extract patterns and recommend strategies.</p>
-      <p><a href="https://github.com/404dipin/Customer_Purchase_Analysis" target="_blank">View on GitHub</a></p>
-    </div>
-    <div class="project-card">
-      <h3>Netflix Data Analysis</h3>
-      <p>Cleaned and visualized Netflix dataset using Pandas, NumPy and Matplotlib. Analyzed genres, content types and countries.</p>
-      <p><a href="https://github.com/404dipin/Netflix_Data_Analysis" target="_blank">View on GitHub</a></p>
-    </div>
-  </section>
+        <hr>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:dipinsilwal4@gmail.com">dipinsilwal4@gmail.com</a></p>
-    <div class="socials">
-      <a href="https://facebook.com/DeepinSilwal" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
-      <a href="https://instagram.com/deepinsilwal_404" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
-      <a href="https://github.com/Dipin04" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-    </div>
-  </section>
+        <section id="projects" class="projects-section">
+            <h2><i class="fas fa-chart-line"></i> Data Analytics Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                     <img src="Netflix.png" alt="Netflix Data Analysis " style="width: 100%; height: 100%; object-fit: cover;">   
+                    </div>
+                    <h3>Netflix Data Analysis</h3>
+                    <p>Exploratory data analysis of Netflix content. Visualized content trends, popular genres, ratings, and release year distributions.</p>
+                    <div class="skills-used">
+                        <span>Python</span><span>Pandas</span><span>Matplotlib</span>
+                    </div>
+                    <a href="https://github.com/Dipin04/Netflix_Data_Analysis" target="_blank" class="view-btn">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
 
-  <footer>
-    &copy; 2025 Dipin Silwal. All rights reserved.
-  </footer>
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                       <img src="customerpurchase.jpg" alt="Customer_Purchase_Analysis " style="width: 100%; height: 100%; object-fit: cover;">  
+                    </div>
+                    <h3>Customer Purchase Evaluation</h3>
+                    <p>Analyzed customer purchasing behavior. Created visualizations for segmentation (RFM), spending patterns, and key performance indicators (KPIs).</p>
+                    <div class="skills-used">
+                        <span>SQL</span><span>Power BI</span><span>Excel</span>
+                    </div>
+                    <a href="https://github.com/Dipin04/Customer_Purchase_Analysis" target="_blank" class="view-btn">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
 
-  <script>
-    const toggle = document.getElementById('toggleDarkMode');
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                        <img src="diwali.jpg" alt="Diwali_sales_Data" style="width: 100%; height: 100%; object-fit: cover;"> 
+                        
 
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      toggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
-    });
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('open');
-    });
-  </script>
 
+                    </div>
+                    <h3>Diwali Sales Data Analysis</h3>
+                    <p>Identified high-revenue product categories and found key customer demographics (age, gender, city) that purchase the most.</p>
+                    <div class="skills-used">
+                        <span>Python</span><span>Pandas</span><span>Matplotlib</span>
+                    </div>
+                    <a href="https://github.com/Dipin04/Diwali_sales_Data" target="_blank" class="view-btn">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+          <img src="instagram.png" alt="Instagram_Engagement_Analysis " style="width: 100%; height: 100%; object-fit: cover;"> 
+                    </div>
+                    <h3>Instagram Engagement Analysis</h3>
+                    <p>Calculated key metrics like engagement rate and follower growth. Built visual insights to track content performance and identify trends.</p>
+                    <div class="skills-used">
+                        <span>Excel</span><span>Power BI</span><span>Data Cleaning</span>
+                    </div>
+                    <a href="https://github.com/Dipin04/Instagram_analysis" target="_blank" class="view-btn">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                        <img src="spotify.jpg" alt="Netflix Data Analysis " style="width: 100%; height: 100%; object-fit: cover;"> 
+                    </div>
+                    <h3>Spotify ML Song Popularity</h3>
+                    <p>Cleaned & analyzed Spotify data (2009–2025). Built a **RandomForestClassifier** model to predict song popularity category (High/Medium/Low). Model metrics (accuracy, precision, recall) are included.</p>
+                    <div class="skills-used">
+                        <span>Python</span><span>Scikit-learn</span><span>ML</span>
+                    </div>
+                    <a href="https://github.com/Dipin04/Spotify-EDA-ML" target="_blank" class="view-btn">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="skills" class="skills-section">
+            <h2><i class="fas fa-code"></i> Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-terminal"></i> Programming</h3>
+                    <ul>
+                        <li><i class="fab fa-python skill-icon"></i> Python</li>
+                        <li><i class="fas fa-database skill-icon"></i> SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-book"></i> Libraries</h3>
+                    <ul>
+                        <li><i class="fas fa-cogs skill-icon"></i> Pandas, NumPy</li>
+                        <li><i class="fas fa-chart-area skill-icon"></i> Matplotlib, Seaborn</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                    <ul>
+                        <li><i class="fas fa-microchip skill-icon"></i> Scikit-learn</li>
+                        <li><i class="fas fa-lightbulb skill-icon"></i> Basics & Concepts</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & BI</h3>
+                    <ul>
+                        <li><i class="fas fa-chart-bar skill-icon"></i> Power BI</li>
+                        <li><i class="fas fa-file-excel skill-icon"></i> Excel</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-code-branch"></i> Version Control</h3>
+                    <ul>
+                        <li><i class="fab fa-git-alt skill-icon"></i> Git</li>
+                        <li><i class="fab fa-github skill-icon"></i> GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="contact" class="contact-section">
+            <h2><i class="fas fa-headset"></i> Get In Touch</h2>
+            <div class="contact-container">
+                <form class="contact-form" action="#" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn primary-btn">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope-open-text"></i> **Email:** <a href="mailto:dipinsilwal4@gmail.com">dipinsilwal4@gmail.com</a></p>
+                    <p><i class="fab fa-github"></i> **GitHub:** <a href="https://github.com/Dipin04" target="_blank">github.com/Dipin04</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> **Location:** Godawari_5 Lalitpur, Nepal</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Dipin Silwal. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/Dipin04" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:dipinsilwal4@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth Scroll for Navigation Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Section Scroll Visibility (Animation Trigger)
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Triggers when 10% of the section is visible
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        // Optional: remove visible class when scrolling away
+                        entry.target.classList.remove('visible'); 
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                // Ensure Hero section is not observed as it's visible by default
+                if(section.id !== 'hero') {
+                    sectionObserver.observe(section);
+                }
+            });
+
+            // Simple Contact Form submission handler (Placeholder)
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Thank you for your message, Dipin will get back to you shortly! (Form submission is simulated.)');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
